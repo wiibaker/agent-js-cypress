@@ -1,5 +1,5 @@
 const { reporters } = require('mocha'),
-    RPClient = require('reportportal-client'),
+    RPClient = require('reportportal-client-restler'),
 
     { testItemStatuses, logLevels } = require('./src/constants'),
     { promiseErrorHandler, getStartLaunchObject, getSuiteStartObject,
