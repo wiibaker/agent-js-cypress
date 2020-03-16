@@ -1,0 +1,46 @@
+{
+  "name": "agent-js-cypress",
+  "version": "1.1.2",
+  "description": "This agent helps Cypress to communicate with Report Portal",
+  "main": "index.js",
+  "scripts": {
+    "test": "node main.js --headless"
+  },
+  "keywords": [
+    "ReportPortal",
+    "Cypress",
+    "reporting",
+    "epam"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reportportal/agent-js-cypress"
+  },
+  "dependencies": {
+    "glob": "7.1.3",
+    "mocha": "7.0.1",
+    "reportportal-client": "https://github.com/wiibaker/client-javascript.git#master",
+    "agent-js-cypress": "https://github.com/wiibaker/agent-js-cypress.git#master"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "cypress": "^4.0.2",
+    "eslint": "6.5.1",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-plugin-cypress": "2.8.1",
+    "eslint-plugin-import": "2.20.0",
+    "eslint-plugin-jest": "^23.8.1",
+    "eslint-plugin-prettier": "3.1.2",
+    "jest": "^25.1.0",
+    "mock-fs": "^4.11.0",
+    "prettier": "1.19.1"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "<rootDir>/example/",
+      "<rootDir>/cypress/",
+      "<rootDir>/node_modules/"
+    ]
+  }
+}

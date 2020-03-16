@@ -13,6 +13,11 @@ const deleteTempFile = (filename) => {
   fs.unlinkSync(filename);
 };
 
+// Clean any existing temp files
+console.log("Cleaning temp files");
+const files = getLaunchTempFiles();
+files.map(deleteTempFile);
+
 cypress.run().then(
   () => {
     fs.readFile(cypressConfigFile, 'utf8', (err, data) => {
@@ -24,12 +29,19 @@ cypress.run().then(
 
       if (config.reporterOptions.isLaunchMergeRequired) {
         const client = new RPClient(config.reporterOptions);
-        client.mergeLaunches();
-        const files = getLaunchTempFiles();
-        files.map(deleteTempFile);
+                    
+        client.mergeLaunches().then(merged => {
+
+            const files = getLaunchTempFiles();
+            files.map(deleteTempFile);
+
+            // Exit the process
+            console.log("All done. Exiting.");
+            process.exit();
+        });
       }
     });
-    process.exit(0);
+    setTimeout(() => {console.log("Process timedout. Exiting.");process.exit(1);}, 60000);
   },
   (error) => {
     console.error(error);
